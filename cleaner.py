@@ -1,5 +1,6 @@
 def normalize_phone(phone):
-    phone = phone.strip().replace(" ", "").replace("-", "")
+    import re
+    phone = re.sub(r"\D", "", phone)
 
     if phone.startswith("+234"):
         return phone
