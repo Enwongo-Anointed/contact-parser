@@ -1,9 +1,9 @@
 class Contact:
-    def __init__(self, name, phone, description):
+    def __init__(self, name, phone, note):
         self.name = name.strip()
         self.phone = phone.strip()
-        self.description = description.strip()
-        self.formatted_name = f"{self.name} - {self.description}"
+        self.note = note.strip()
+        self.formatted_name = f"{self.name} - {self.note}"
 
     def __repr__(self):
         return f"{self.formatted_name} | {self.phone}"
