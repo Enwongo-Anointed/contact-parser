@@ -1,6 +1,7 @@
 from flask import Flask, request, render_template
 import os
 from parser import parse_pdf
+from google_contacts import get_service, create_contact
 
 app = Flask(__name__)
 
@@ -30,6 +31,11 @@ def upload_file():
 
     contacts = parse_pdf(filepath)
 
+    service = get_service()
+
+    for c in contacts:
+        create_contact(service, c.formatted_name, c.phone, c.note)
+
     return {
         "contacts": [
             {
@@ -44,3 +50,4 @@ def upload_file():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
